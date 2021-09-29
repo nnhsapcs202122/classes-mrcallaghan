@@ -115,8 +115,8 @@ public class MileageTracker
      */
     public double getFuelConsumed()
     {
-        //return this.fuelConsumed;
-        return 0.0;
+        return this.fuelConsumed;
+        
     }
     
     
@@ -127,9 +127,9 @@ public class MileageTracker
      */
     public double getMileage()
     {
-        //double mileage = this.fuelConsumed / this.milesDriven;
-        //return mileage;
-        return 0.0;
+        double mileage = this.milesDriven / this.fuelConsumed;
+        return mileage;
+        
     }
     
     /**
@@ -139,8 +139,8 @@ public class MileageTracker
      */
     public String getVIN()
     {
-        //return this.vin;
-        return "None";
+        return this.vin;
+
     }
     
     /**
@@ -165,6 +165,23 @@ public class MileageTracker
          */
         this.vin = newVIN;
     }
+    
+    public String toString()
+    {
+        String str = "VIN: " + this.getVIN() + "; miles driven: " + this.getMilesDriven() +
+            " miles; fuel consumed: " + this.getFuelConsumed() + " gallons" + "; milage: " +
+            this.getMileage() + " mpg";
+        return str;
+    }
+    
+    public static void main(String[] args)
+    {
+        MileageTracker tracker = new MileageTracker(100, 4);
+        System.out.println(tracker);
+        
+    }
+    
+    
 }
 
 
