@@ -203,6 +203,7 @@ public class CaesarCipher
                 leftoverSeconds + " seconds\n";
                 
                 
+        double yearsAsDecimal = totalSeconds; // add!
         
         /*
          * Arithmetic promotion
