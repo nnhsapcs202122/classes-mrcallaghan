@@ -232,9 +232,33 @@ public class CaesarCipher
         
         final long SECONDS_FOR_EVERY_YEAR = SECONDS_FOR_EVERY_MINUTE *
                 MINUTES_FOR_EVERY_HOUR * HOURS_FOR_EVERY_DAY * DAYS_FOR_EVERY_YEAR;
-                
+          
+        /*
+         * In this example, the value of SECONDS_FOR_EVERY_YEAR is promoted to a double
+         *      and then floating-point division is performed and assigned to
+         *      yearsAsDecimal.
+         *      
+         * The local variable SECONDS_FOR_EVERY_YEAR is still a long and still has
+         *      the same value.
+         */
         yearsAsDecimal = yearsAsDecimal / SECONDS_FOR_EVERY_YEAR;
         desc += "or " + yearsAsDecimal + " years\n";
+        
+        /*
+         * To force a narrowing conversion, use the cast operator.
+         *      A cast is the "I know what I'm doing, trust me" conversion.
+         *      
+         *  (int)(84.69) => truncates to an int with a value of 84
+         *  
+         *  If we want to round a double to the nearest integer value, one approach is to
+         *		add 0.5 and then cast the result to an integer, which truncates the decimal
+         * 		portion.
+         * 		
+         * The following divides yearsAsDecimal by 10, then rounds the resulting long to
+         *		an int
+         */
+        int decades = (int)((yearsAsDecimal / 10) + 0.5);
+        desc += "or about " + decades + " decades\n";
                 
         return desc;
          
