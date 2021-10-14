@@ -16,6 +16,7 @@ public class CaesarCipher
     
     public CaesarCipher(String initialKeyphrase)
     {
+        this.keyphrase = initialKeyphrase;
         // prepare the keyphrase by removing duplicate letters
         this.compressKeyphrase(initialKeyphrase);
     
@@ -202,8 +203,16 @@ public class CaesarCipher
                 " days, " + leftoverHours + " hours, " + leftoverMinutes + " minutes, " +
                 leftoverSeconds + " seconds\n";
                 
-                
-        double yearsAsDecimal = totalSeconds; // add!
+        /*
+         * A conversion is when a data value is converted from one type to another
+         *      (e.g., int to a double, double to an int, int to a long)
+         *      
+         *      Widening: preserves information (e.g., int to a double, int to a long)
+         *      Narrowing: lossy; may lose information (e.g., double to an int)
+         *      
+         * Java only automatically performs widening conversions.
+         */      
+        double yearsAsDecimal = totalSeconds; 
         
         /*
          * Arithmetic promotion
